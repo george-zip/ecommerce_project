@@ -20,6 +20,7 @@ create table User
     City              varchar(30)                 not null,
     StateAbbreviation char(2)                     not null,
     ZipCode           char(9)                     not null,
+    Password          char(60)                    not null,
     primary key (UserID),
     foreign key (RoleID) references Role (RoleID) on delete restrict
 );
@@ -58,10 +59,10 @@ create table Product
 (
     ProductID    int unsigned auto_increment not null,
     Category     varchar(30)                 not null,
-    Description  varchar(50)                 not null,
-    PhotoLink    varchar(50)                 not null,
+    Description  varchar(80)                 not null,
+    PhotoLink    varchar(120)                not null,
     AvailableQty smallint unsigned           not null,
-    Price        float(4, 2)                 not null,
+    Price        float(6, 2)                 not null,
     primary key (ProductID),
     check (AvailableQty >= 0),
     check (Price > 0.0)
