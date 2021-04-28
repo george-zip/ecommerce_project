@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start();  //enables setting up session variables
 require_once "connection.php";
 
 if(isset($_POST["btnLogin"])) {  //check if user accessed page correctly

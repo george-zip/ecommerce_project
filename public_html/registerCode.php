@@ -12,7 +12,9 @@ if(isset($_POST["btnLogin"])) {
     $query = "INSERT INTO users (Username,Password,Role) VALUES ('$username','$password','Customer')";
     if (mysqli_query($conn,$query)){
         echo "New User created successfully";
+        header("location:Login.php");
     }
+
 
 else  {
     header("location:Register.php");

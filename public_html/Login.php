@@ -17,10 +17,12 @@
       </div>
       <div class="form-group">
         <label>Password</label>
-        <input type=password" name="password" class="
+        <input type = "password" name="password" class="
         form-control" placeholder="Enter Password">
       </div>
       <p class="text-center" style="color:red;"></p>
+
+
 
       </p>
       <div class="form-group">
