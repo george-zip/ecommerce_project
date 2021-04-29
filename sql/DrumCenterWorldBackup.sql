@@ -10,18 +10,17 @@ create table Role
     primary key (RoleID)
 );
 
-create table Users
+create table User
 (
     UserID            int unsigned auto_increment not null,
     RoleID            int unsigned                not null,
     FirstName         varchar(30)                 not null,
     LastName          varchar(30)                 not null,
-    Email             varchar(50)                 not null,
     Street            varchar(50)                 not null,
     City              varchar(30)                 not null,
     StateAbbreviation char(2)                     not null,
     ZipCode           char(9)                     not null,
-    UserPassword      varchar(256)                not null,
+    Password          char(60)                    not null,
     primary key (UserID),
     foreign key (RoleID) references Role (RoleID) on delete restrict
 );
@@ -32,8 +31,7 @@ create table Employee
     SSN        char(9)      not null,
     HireDate   date         not null,
     Salary     float(8, 2)  not null,
-    primary key (EmployeeID),
-    foreign key (EmployeeID) references Users (UserID) on delete restrict,
+    foreign key (EmployeeID) references User (UserID) on delete restrict,
     check (Salary > 0.0),
     check (HireDate > '2015-01-01')
 );
@@ -43,8 +41,7 @@ create table Customer
     CustomerID    int unsigned not null,
     JoinDate      date         not null,
     BillingMethod varchar(50)  not null,
-    primary key (CustomerID),
-    foreign key (CustomerID) references Users (UserID) on delete restrict,
+    foreign key (CustomerID) references User (UserID) on delete restrict,
     check (JoinDate > '2015-01-01')
 );
 
