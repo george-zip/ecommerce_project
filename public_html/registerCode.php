@@ -6,7 +6,7 @@ if ($conn==false) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-if(isset($_POST["btnLogin"])) {
+if(isset($_POST["btnRegister"])) {
     $username = $_POST["username"];
     $password = password_hash($_POST["password"],PASSWORD_DEFAULT);
     $query = "INSERT INTO users (Username,Password,Role) VALUES ('$username','$password','Customer')";

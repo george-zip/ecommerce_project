@@ -1,5 +1,5 @@
 <?php
-//include "code.php";
+//include "loginCode.php";
 ?>
 
 <!DOCTYPE html>
@@ -9,8 +9,9 @@
       <title>Login</title>
   </head>
   <body>
+  <main id="main-holder">
     <h2 class="text-center">Login</h2><hr/>
-    <form action="code.php" method="POST">
+    <form action="loginCode.php" method="POST">
       <div class=form-group">
         <label>Username</label>
         <input type="text" name="username" class="form-control" placeholder="Enter User Name">
@@ -22,8 +23,6 @@
       </div>
       <p class="text-center" style="color:red;"></p>
 
-
-
       </p>
       <div class="form-group">
         <input type="submit" name="btnLogin" class="btn
@@ -31,6 +30,6 @@
 
       </div>
     </form>
-
+  </main>
   </body>
 </html>
