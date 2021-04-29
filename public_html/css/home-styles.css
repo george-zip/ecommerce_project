@@ -1,0 +1,20 @@
+body {
+    background-color:white;
+}
+
+.home-menu {
+    width: 800px;
+    margin:0 auto;
+}
+
+h1, h2, h3{
+    font-family: Arial, Helvetica, sans-serif;;
+    line-height:24 px;
+}
+
+h1 {
+    font-weight: 600;
+    font-size:32 px;
+    padding: 20 px 0;
+    text-align:center;
+}
