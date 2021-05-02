@@ -14,7 +14,7 @@
     <form action="loginCode.php" method="POST">
       <div class=form-group">
         <label>Username</label>
-        <input type="text" name="username" class="form-control" placeholder="Enter User Name">
+        <input type="text" name="email" class="form-control" placeholder="Enter Email">
       </div>
       <div class="form-group">
         <label>Password</label>

@@ -3,27 +3,27 @@ session_start();  //enables setting up session variables
 require_once "connection.php";
 
 if(isset($_POST["btnLogin"])) {  //check if user accessed page correctly
-    $username = $_POST["username"];
+    $email = $_POST["email"];
     $password = $_POST["password"];
 
    //$query = "SELECT * FROM users Where Username='$username' AND Password='$password'";
-   $query = "SELECT * FROM users Where Username='$username'";
+   $query = "SELECT * FROM users Where Email='$email'";
 
     $result = mysqli_query($conn, $query);
     if (mysqli_num_rows($result) > 0) {
         $message = "valid Username or Password";
         while ($row = mysqli_fetch_assoc($result)) {
-            $hashPassword=$row["Password"];   //retrieve hashed password from database
+            $hashPassword=$row["UserPassword"];   //retrieve hashed password from database
             $validatedPassword = password_verify($password,$hashPassword);   //return true or false
-            if ($row["Role"] == "Admin" && $validatedPassword===true) {
-                $_SESSION['AdminUser'] = $row["Username"];
-                $_SESSION['Role'] = $row["Role"];
+            if ($row["RoleID"] == 2 && $validatedPassword===true) {
+                $_SESSION['AdminUser'] = $row["Email"];
+                $_SESSION['Role'] = $row["RoleID"];
                 header('Location:admin.php');
 
 
-            } else if ($row["Role"] == "Customer" && $validatedPassword===true){
-                $_SESSION['LoginUser'] = $row["Username"];
-                $_SESSION['Role'] = $row["Role"];
+            } else if ($row["RoleID"] == 1 && $validatedPassword===true){
+                $_SESSION['LoginUser'] = $row["Email"];
+                $_SESSION['Role'] = $row["RoleID"];
                 header('Location:user.php');
             }
             else {
@@ -36,4 +36,3 @@ if(isset($_POST["btnLogin"])) {  //check if user accessed page correctly
         exit();
     }
 }
-?>

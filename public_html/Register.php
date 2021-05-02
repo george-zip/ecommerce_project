@@ -22,12 +22,12 @@
 
                 <div class="form-group">
                     <!-- <label>Password</label> -->
-                    <input type=password" name="password" class="form-control" placeholder="Enter Password">
+                    <input type="password" name="password" class="form-control" placeholder="Enter Password">
                 </div>
                 <div class="form-group">
                     <!-- <label>Email</label> -->
                     <input type=text" name="email" class="
-                    form-control" placeholder="Enter email">
+                    form-control" placeholder="Enter Email">
                 </div
                 <div class="form-group">
                     <!-- <label>First Name</label> -->
@@ -59,10 +59,7 @@
                     <input type=text" name="zip" class="form-control" placeholder="Enter Zip Code">
                 </div>
 
-                <div class="form-group">
-                   <!-- <label>Join Date</label> -->
-                    <input type=text" name="joindate" class="form-control" placeholder="Enter Join Date">
-                </div>
+
 
                     <!--<label>Billing Method</label> -->
                 <div class="form-group">
