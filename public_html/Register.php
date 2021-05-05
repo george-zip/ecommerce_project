@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,22 +9,19 @@
         <main id="main-holder">
 
             <h2 class="text-center">Register</h2>
-            <hr/>
-            <form id="login-form" action="registerCode.php" method="POST">
-                <div class=form-group">
-                    <!-- <label>Username</label> -->
-                    <input type="text" name="username" class="form-control" placeholder="Enter User Name">
-                </div>
 
-                <div class="form-group">
-                    <!-- <label>Password</label> -->
-                    <input type="password" name="password" class="form-control" placeholder="Enter Password">
-                </div>
+            <form id="login-form" action="registerCode.php" method="POST">
+
                 <div class="form-group">
                     <!-- <label>Email</label> -->
                     <input type=text" name="email" class="
                     form-control" placeholder="Enter Email">
                 </div
+                <div class="form-group">
+                    <!-- <label>Password</label> -->
+                    <input type="password" name="password" class="form-control" placeholder="Enter Password">
+                </div>
+
                 <div class="form-group">
                     <!-- <label>First Name</label> -->
                     <input type=text" name="firstname" class="
@@ -71,7 +64,31 @@
                     </select>
                 </div>
                     <input type="submit" name="btnRegister" class="btn-primary" value="Register">
+
             </form>
+
+            <?php
+
+                if (isset($_GET['message'])) {
+                    if ($_GET['message'] == "missingRegister") {
+                        //$value = $_GET['message'];
+                        echo "Please Provide all values";
+                    }
+                    elseif ($_GET['message'] == "errorEmail") {
+                        //$value = $_GET['message'];
+                        echo "Please provide a valid email";
+                    }
+                    elseif ($_GET['message'] == "emailExists") {
+                        //$value = $_GET['message'];
+                        echo "Email is not available";
+                    }
+                }
+
+            ?>
         </main>
+
+
+
     </body>
+
 </html>

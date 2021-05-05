@@ -57,7 +57,7 @@ body {
 }
 
 select:required:invalid {
-    color: gray;
+    color: grey;
 }
 option[value=""][disabled] {
     display: none;
