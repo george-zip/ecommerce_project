@@ -11,7 +11,8 @@ $conn = mysqli_connect($server,$user,$password,$database);
 if($conn)
 //connection succeeded
 {
-    echo "Connection Successful";
+    echo nl2br("Connection Successful\n");
+    echo "";
 }
 
 else{

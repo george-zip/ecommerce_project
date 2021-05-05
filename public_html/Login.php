@@ -30,6 +30,19 @@
 
       </div>
     </form>
+<?php
+if (isset($_GET['message'])) {
+    if ($_GET['message'] == "missinglogin") {
+        echo "Please Provide all values";
+    }
+    elseif ($_GET['message'] == "erroremailformat") {
+        echo "Email is not valid";
+    }
+    elseif ($_GET['message'] == "emailbad") {
+        echo "Email or password is not valid";
+    }
+}
+    ?>
   </main>
   </body>
 </html>
