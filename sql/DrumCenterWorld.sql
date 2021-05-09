@@ -80,3 +80,8 @@ create table Items
     foreign key (ProductID) references Product (ProductID) on delete restrict,
     check (OrderQty > 0.0)
 );
+
+drop user if exists 'e_commerce'@'localhost';
+create user 'e_commerce'@'localhost' identified by 'e_commerce';
+grant all privileges on DrumCenterWorld.* to 'e_commerce'@'localhost';
+flush privileges;
