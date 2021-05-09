@@ -5,6 +5,8 @@ $user="root";
 $password="";
 $database="drumcenterworld";
 
+//need to put this outside the public directory
+
 $conn = mysqli_connect($server,$user,$password,$database);
 //mysqli does not use functions.  mysqli replaces mysql
 

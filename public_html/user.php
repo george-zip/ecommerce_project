@@ -1,16 +1,7 @@
+
 <?php
-session_start();
+include_once'heading.php';  //navigation menu will be on all web pages
 ?>
-
-<html>
-<head>
-    <title>Multi User Lgin Demo</title>
-    <link rel="stylesheet" type="test/css" href="css/bootstrap.min.css">
-    <link rel=""stylesheet" type="text/css" href="css/style.css">
-
-
-</head>
-<body>
     <div class=""container
         <div class="row">
             <div class="com-md-6">

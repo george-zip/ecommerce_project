@@ -66,13 +66,13 @@ if (isset($_POST["btnLogin"])) {  //check if user accessed page correctly
         else if ($row["RoleID"] == 3) {
             $_SESSION['LoginUser'] = $row["Email"];
             $_SESSION['Role'] = $row["RoleID"];
-            //header('Location:user.php');
+            //header('Location:employee.php');
         }
 
         else if ($row["RoleID"] == 4) {
             $_SESSION['LoginUser'] = $row["Email"];
             $_SESSION['Role'] = $row["RoleID"];
-            //header('Location:user.php');
+           // header('Location:owner.php');
         }
         mysqli_stmt_close($value);
     } else {

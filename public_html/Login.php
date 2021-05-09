@@ -1,14 +1,6 @@
 <?php
-//include "loginCode.php";
+include_once'heading.php';  //navigation menu will be on all web pages
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <title>Login</title>
-  </head>
-  <body>
   <main id="main-holder">
     <h2 class="text-center">Login</h2><hr/>
     <form action="loginCode.php" method="POST">

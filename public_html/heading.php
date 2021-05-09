@@ -20,7 +20,6 @@ session_start();
 
 
             if (isset($_SESSION["LoginUser"])){
-                echo  "<li><a href='Login.php'>Login</a></li>";
                 echo  "<li><a href='Logout.php'>Logout</a></li>";
             }
             else
@@ -28,12 +27,20 @@ session_start();
                 echo "<li><a href='Login.php'>Login</a></li>";
                 echo "<li><a href='Register.php'>Register</a></li>";
             }
-            if (isset($_SESSION["Role"])){
-                if($_SESSION["Role"]==2){ //admin
-                    echo "<li><a href='RegisterEmployee.php'>Employee Administration</a></li>";
-                }
-            }
+            //if (isset($_SESSION['AdminLogged']) && $_SESSION['AdminLogged'] == true){
+ //           if (isset($_SERVER['PHP_AUTH']){
+ //                   echo "<li><a href='AdminUsers.php'>Administration</a></li>";
+ //           }
+//            else {
+//                echo "<li><a href='LoginAdmin.php'>Administration</a></li>";
+ //           }
+// if (isset($_SERVER['PHP_AUTH_USER']) ){
+//     $temp = "value= " . $_SERVER['PHP_AUTH_USER'];
+//     echo "<li>$temp<li>";
+ //}
             ?>
+            <li><a href='AdminUsers.php'>Administration</a></li>
+
         </ul>
     </div>
 </nav>
