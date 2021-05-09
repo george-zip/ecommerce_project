@@ -35,8 +35,8 @@ if (isset($_POST["btnLogin"])) {  //check if user accessed page correctly
     mysqli_stmt_execute($value);
     $result = mysqli_stmt_get_result($value);
 
-    if ($row = mysqli_fetch_assoc($result)) {  //fetches a result row as an array
-        //return $row;  //user exists
+    $row = mysqli_fetch_assoc($result);
+    if ($row) {
 
         $hashedPassword = $row["UserPassword"]; //get password returned from query
         echo  nl2br("password in db  $hashedPassword\n");
@@ -46,7 +46,7 @@ if (isset($_POST["btnLogin"])) {  //check if user accessed page correctly
         if (!$userPassword1) {
             mysqli_stmt_close($value);
             echo "passwords don't match";
-            header("location:login.php?message=emailbad"); //send message
+            header("location:login.php?message=emailBad"); //send message
             exit();
         }
 

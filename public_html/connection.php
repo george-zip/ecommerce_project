@@ -1,8 +1,9 @@
 <?php
 
+// TODO: Move these params into configuration file
 $server="localhost:3306";
-$user="root";
-$password="";
+$user="e_commerce";
+$password="e_commerce";
 $database="drumcenterworld";
 
 //need to put this outside the public directory
