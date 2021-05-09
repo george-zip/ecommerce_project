@@ -14,7 +14,7 @@ session_start();
 <nav id="navigationbar">
     <div>
         <ul>
-            <li><a href="index.php"> <img src= "images/logo.png" alt = "Drum Center World"></a></li>
+
             <li><a href="index.php">Home </a></li>
             <?php
 
