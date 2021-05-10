@@ -1,9 +1,11 @@
+use DrumCenterWorld;
+
 delete from Items where 1 = 1;
 delete from Product where 1 = 1;
 delete from CustomerOrder where 1 = 1;
 delete from Customer where 1 = 1;
 delete from Employee where 1 = 1;
-delete from User where 1 = 1;
+delete from Users where 1 = 1;
 delete from Role where 1 = 1;
 
 insert into Role values (1, "Owner");
@@ -12,11 +14,12 @@ insert into Role values (3, "Administrator");
 insert into Role values (4, "Customer");
 select * from Role;
 
-insert into User values (1, 1, "Phil", "Carson", "14148 Sunset Boulevard", "Hollywood", "CA", "90028", "encrypted");
-insert into User values (2, 2, "John", "Acocella", "1201 Laurel Way", "Beverly Hills", "CA", "90210", "encrypted");
-insert into User values (3, 3, "Zach", "Dau", "200 Delfern Drive", "Beverly Hills", "CA", "90210", "encrypted");
-insert into User values (4, 4, "Chris", "Wallerstein", "31100 Broad Beach Road", "Beverly Hills", "CA", "90210", "encrypted");
-select * from User;
+# unencrypted version of password is 'test' (without quote marks)
+insert into Users values (1, 1, "Phil", "Carson", "phil.carson@hotmail.com", "14148 Sunset Boulevard", "Hollywood", "CA", "90028", "$2y$10$p9V.MBZIPGewwxTkE7RcEeU0vImGe78UU1k5MLuWDZR3pVX1bYpU2");
+insert into Users values (2, 2, "John", "Acocella", "john_a@gmail.com", "1201 Laurel Way", "Beverly Hills", "CA", "90210", "$2y$10$p9V.MBZIPGewwxTkE7RcEeU0vImGe78UU1k5MLuWDZR3pVX1bYpU2");
+insert into Users values (3, 3, "Zach", "Dau", "zachd@foo.com", "200 Delfern Drive", "Beverly Hills", "CA", "90210", "$2y$10$p9V.MBZIPGewwxTkE7RcEeU0vImGe78UU1k5MLuWDZR3pVX1bYpU2");
+insert into Users values (4, 4, "Chris", "Wallerstein", "wallersteinc1@montclair.edu", "31100 Broad Beach Road", "Beverly Hills", "CA", "90210", "$2y$10$p9V.MBZIPGewwxTkE7RcEeU0vImGe78UU1k5MLuWDZR3pVX1bYpU2");
+select * from Users;
 
 insert into Employee values (2, "123456789", "2017-04-15", 60000);
 select * from Employee;

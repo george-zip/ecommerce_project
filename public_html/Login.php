@@ -31,8 +31,11 @@ if (isset($_GET['message'])) {
     elseif ($_GET['message'] == "erroremailformat") {
         echo "Email is not valid";
     }
-    elseif ($_GET['message'] == "emailbad") {
+    elseif ($_GET['message'] == "emailBad") {
         echo "Email or password is not valid";
+    }
+    else {
+        echo "An unexpected error error occurred";
     }
 }
     ?>

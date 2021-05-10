@@ -2,6 +2,11 @@
 session_start();  //enables setting up session variables
 require_once "connection.php";
 
+const OWNER_ROLE = 1;
+const EMPLOYEE_ROLE = 2;
+const ADMIN_ROLE = 3;
+const CUSTOMER_ROLE = 4;
+
 if (isset($_POST["btnLogin"])) {  //check if user accessed page correctly
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -35,8 +40,8 @@ if (isset($_POST["btnLogin"])) {  //check if user accessed page correctly
     mysqli_stmt_execute($value);
     $result = mysqli_stmt_get_result($value);
 
-    if ($row = mysqli_fetch_assoc($result)) {  //fetches a result row as an array
-        //return $row;  //user exists
+    $row = mysqli_fetch_assoc($result);
+    if ($row) {
 
         $hashedPassword = $row["UserPassword"]; //get password returned from query
         echo  nl2br("password in db  $hashedPassword\n");
@@ -46,30 +51,30 @@ if (isset($_POST["btnLogin"])) {  //check if user accessed page correctly
         if (!$userPassword1) {
             mysqli_stmt_close($value);
             echo "passwords don't match";
-            header("location:login.php?message=emailbad"); //send message
+            header("location:login.php?message=emailBad"); //send message
             exit();
         }
 
-        if ($row["RoleID"] == 2) {
+        if ($row["RoleID"] == ADMIN_ROLE) {
             $_SESSION['AdminUser'] = $row["Email"];
             $_SESSION['Role'] = $row["RoleID"];
             header('Location:admin.php');
 
-
-        } else if ($row["RoleID"] == 1) {
+        } else if ($row["RoleID"] == CUSTOMER_ROLE) {
             $_SESSION['LoginUser'] = $row["Email"];
             $_SESSION['Role'] = $row["RoleID"];
+            $_SESSION['Name'] = $row["FirstName"]." ".$row["LastName"];
             header('Location:user.php');
 
         }
 
-        else if ($row["RoleID"] == 3) {
+        else if ($row["RoleID"] == EMPLOYEE_ROLE) {
             $_SESSION['LoginUser'] = $row["Email"];
             $_SESSION['Role'] = $row["RoleID"];
             //header('Location:employee.php');
         }
 
-        else if ($row["RoleID"] == 4) {
+        else if ($row["RoleID"] == OWNER_ROLE) {
             $_SESSION['LoginUser'] = $row["Email"];
             $_SESSION['Role'] = $row["RoleID"];
            // header('Location:owner.php');
