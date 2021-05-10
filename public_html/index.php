@@ -12,7 +12,7 @@
 
                 <div>
                     <h3>
-                        Category 1
+                        <a href="Category1.php">Category1</a>
                     </h3>
                 </div>
                 <div>

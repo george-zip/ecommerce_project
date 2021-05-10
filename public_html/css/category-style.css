@@ -1,0 +1,88 @@
+body {
+  line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display: block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q{
+    quotes:none;
+}
+blockquote:before,blockquote:after,
+q:before, q:after{
+    content:'';
+    content:none;
+}
+
+a{
+    marging:0;
+    padding:0;
+    font-size:100%;
+
+}
+
+
+
+input, select {
+    vertical-align:middle;
+}
+
+*{
+    text-decoration: none;
+}
+
+main {
+    padding-top:100px;
+}
+
+header {
+
+}
+
+.category-links h2 {
+    font-family:Catamaran;
+    font-size:28px;
+    font-weight: 600px;
+    color:#111;
+    text-transform: uppercase;
+}
+
+.category-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+.category-container a {
+    width:230px;
+    margin:20px 10px 0;
+
+}
+
+.category-container a:hover{
+    opacity:0.8;
+}
+
+.category-container a div {
+    width:100%;
+    height:235px;
+    background-color:red;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.category-container a h3{
+    font-family: Catamaran;
+    font-size:20px;
+    font-weight:700;
+    color:#111;
+}

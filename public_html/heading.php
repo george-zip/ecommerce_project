@@ -11,6 +11,7 @@ session_start();
 <!--    <link rel="preconnect" href="https://fonts.gstatic.com">-->
 </head>
 <body>
+<header>
 <nav id="navigationbar">
     <div>
         <ul>
@@ -44,4 +45,5 @@ session_start();
         </ul>
     </div>
 </nav>
+    </header>
 <div class="homeMenu"></div>
