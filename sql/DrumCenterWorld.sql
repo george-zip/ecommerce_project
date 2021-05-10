@@ -33,7 +33,7 @@ create table Employee
     HireDate   date         not null,
     Salary     float(8, 2)  not null,
     primary key (EmployeeID),
-    foreign key (EmployeeID) references Users (UserID) on delete restrict,
+    foreign key (EmployeeID) references Users (UserID) on delete cascade,
     check (Salary > 0.0),
     check (HireDate > '2015-01-01')
 );
@@ -44,7 +44,7 @@ create table Customer
     JoinDate      date         not null,
     BillingMethod varchar(50)  not null,
     primary key (CustomerID),
-    foreign key (CustomerID) references Users (UserID) on delete restrict,
+    foreign key (CustomerID) references Users (UserID) on delete cascade,
     check (JoinDate > '2015-01-01')
 );
 

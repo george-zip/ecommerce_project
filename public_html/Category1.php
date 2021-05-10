@@ -58,7 +58,8 @@ session_start();
         </div>
 
         <?php
-        if (isset($_SESSION['Role']) && ($_SESSION['Role']==3 || $_SESSION['Role'])==4){
+        //echo "Session ".$_SESSION['Role'];
+        if (isset($_SESSION['Role']) && ($_SESSION['Role']==3 || $_SESSION['Role']==4)){
             echo '<div class="category-upload">
                     <form action="../includes/category-upload.inc.php" method="POST" enctype="multipart/form-data">
                     <input type="text" name="filename" placeholder="File name">

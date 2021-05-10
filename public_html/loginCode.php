@@ -2,10 +2,10 @@
 session_start();  //enables setting up session variables
 require_once "connection.php";
 
-const OWNER_ROLE = 1;
-const EMPLOYEE_ROLE = 2;
-const ADMIN_ROLE = 3;
-const CUSTOMER_ROLE = 4;
+const OWNER_ROLE = 4;
+const EMPLOYEE_ROLE = 3;
+const ADMIN_ROLE = 2;
+const CUSTOMER_ROLE = 1;
 
 if (isset($_POST["btnLogin"])) {  //check if user accessed page correctly
     $email = $_POST["email"];
