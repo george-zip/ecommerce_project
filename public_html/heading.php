@@ -40,6 +40,10 @@ session_start();
 //     echo "<li>$temp<li>";
  //}
             ?>
+            if (isset($_SESSION["LoginUser"])){
+            <li><a href='Checkout.php'>Cart</a></li>
+            }
+
             <li><a href='AdminUsers.php'>Administration</a></li>
 
         </ul>

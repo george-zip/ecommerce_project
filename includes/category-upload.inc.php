@@ -9,6 +9,10 @@ if (isset($_POST['submit'])) {
     }
     $imageTitle = $_POST['filetitle'];
     $imageDesc = $_POST['filedesc'];
+   $imagePrice = $_POST['fileprice'];
+    $imagePrice2 = (float)$imagePrice;
+    $imageQuantity = $_POST['filequantity'];
+    $imageQuantity2 = (int)$imageQuantity;
 
     $file = $_FILES['file'];
     $fileName = $file["name"];
@@ -56,17 +60,13 @@ if (isset($_POST['submit'])) {
                                 echo "error in query";
                             }
                             else {
-$qty=1;
-$price=1.0;
                                 echo "'$imageTitle'.'$imageDesc'.'$imageFullName'";
-                                mysqli_stmt_bind_param($stmt, "sssid",$imageTitle,$imageDesc,$imageFullName,$qty,$price );
+                                mysqli_stmt_bind_param($stmt, "sssid",$imageTitle,$imageDesc,$imageFullName,$imageQuantity2,$imagePrice2 );
                                 mysqli_stmt_execute($stmt);
                                 move_uploaded_file($fileTempName,$fileDest);  //move actual image
                                 header("Location: ../public_html/Category1.php?message=fileload");
-
                             }
                         }
-
                     }
                 }
             }

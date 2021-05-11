@@ -58,26 +58,29 @@ if (isset($_POST["btnLogin"])) {  //check if user accessed page correctly
         if ($row["RoleID"] == ADMIN_ROLE) {
             $_SESSION['AdminUser'] = $row["Email"];
             $_SESSION['Role'] = $row["RoleID"];
-            header('Location:admin.php');
+            //header('Location:admin.php');
+            header('Location:index.php');
 
         } else if ($row["RoleID"] == CUSTOMER_ROLE) {
             $_SESSION['LoginUser'] = $row["Email"];
             $_SESSION['Role'] = $row["RoleID"];
             $_SESSION['Name'] = $row["FirstName"]." ".$row["LastName"];
-            header('Location:user.php');
-
+            //header('Location:user.php');
+            header('Location:index.php');
         }
 
         else if ($row["RoleID"] == EMPLOYEE_ROLE) {
             $_SESSION['LoginUser'] = $row["Email"];
             $_SESSION['Role'] = $row["RoleID"];
             //header('Location:employee.php');
+            header('Location:index.php');
         }
 
         else if ($row["RoleID"] == OWNER_ROLE) {
             $_SESSION['LoginUser'] = $row["Email"];
             $_SESSION['Role'] = $row["RoleID"];
            // header('Location:owner.php');
+            header('Location:index.php');
         }
         mysqli_stmt_close($value);
     } else {
