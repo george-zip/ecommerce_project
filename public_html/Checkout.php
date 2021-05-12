@@ -3,7 +3,7 @@
 include_once'heading.php';  //navigation menu will be on all web pages
 ?>
 <main>
-    <form form action="index.php" method="POST">
+    <form form action="../includes/CreateOrder.php" method="POST">
 <table margins="10px" style="width:25%"  border="1px solid black"  border-collapse="collapse">
     <tr>
         <th>Item ID</th>
@@ -44,8 +44,9 @@ include_once'heading.php';  //navigation menu will be on all web pages
     </tr>
 
 </table>
-        <input type="submit" name="btnLogin" class="btn
-        btn-primary" value="Place Order"></td>
+
+        <input type="submit" name="btn-order" class="btn-order"
+               value="Place Order"></td>
     </form>
 </main>
 

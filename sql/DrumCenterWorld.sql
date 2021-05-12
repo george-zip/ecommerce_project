@@ -75,8 +75,8 @@ create table Items
 (
     OrderID   int unsigned not null,
     ProductID int unsigned not null,
-    OrderQty  float(6, 2)  not null,
-    foreign key (OrderID) references CustomerOrder (OrderID) on delete restrict,
+    OrderQty  int unsigned not null,
+    foreign key (OrderID) references CustomerOrder (OrderID) on delete cascade,
     foreign key (ProductID) references Product (ProductID) on delete restrict,
     check (OrderQty > 0.0)
 );
