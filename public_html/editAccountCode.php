@@ -26,7 +26,6 @@ if(isset($_POST["btnRegister"]) and strlen($_POST["changed"]) > 0) {
         }
     }
 
-    $_SESSION['UserID'] = 4;
     $updateStr = createUpdateString($_POST, $_SESSION['UserID']);
 
     mysqli_begin_transaction($conn);
