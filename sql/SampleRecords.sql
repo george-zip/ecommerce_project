@@ -8,20 +8,20 @@ delete from Employee where 1 = 1;
 delete from Users where 1 = 1;
 delete from Role where 1 = 1;
 
-insert into Role values (1, "Owner");
-insert into Role values (2, "Employee");
-insert into Role values (3, "Administrator");
-insert into Role values (4, "Customer");
+insert into Role values (4, "Owner");
+insert into Role values (3, "Employee");
+insert into Role values (2, "Administrator");
+insert into Role values (1, "Customer");
 select * from Role;
 
 # unencrypted version of password is 'test' (without quote marks)
-insert into Users values (1, 1, "Phil", "Carson", "phil.carson@hotmail.com", "14148 Sunset Boulevard", "Hollywood", "CA", "90028", "$2y$10$p9V.MBZIPGewwxTkE7RcEeU0vImGe78UU1k5MLuWDZR3pVX1bYpU2");
+insert into Users values (1, 4, "Phil", "Carson", "phil.carson@hotmail.com", "14148 Sunset Boulevard", "Hollywood", "CA", "90028", "$2y$10$p9V.MBZIPGewwxTkE7RcEeU0vImGe78UU1k5MLuWDZR3pVX1bYpU2");
 insert into Users values (2, 2, "John", "Acocella", "john_a@gmail.com", "1201 Laurel Way", "Beverly Hills", "CA", "90210", "$2y$10$p9V.MBZIPGewwxTkE7RcEeU0vImGe78UU1k5MLuWDZR3pVX1bYpU2");
 insert into Users values (3, 3, "Zach", "Dau", "zachd@foo.com", "200 Delfern Drive", "Beverly Hills", "CA", "90210", "$2y$10$p9V.MBZIPGewwxTkE7RcEeU0vImGe78UU1k5MLuWDZR3pVX1bYpU2");
-insert into Users values (4, 4, "Chris", "Wallerstein", "wallersteinc1@montclair.edu", "31100 Broad Beach Road", "Beverly Hills", "CA", "90210", "$2y$10$p9V.MBZIPGewwxTkE7RcEeU0vImGe78UU1k5MLuWDZR3pVX1bYpU2");
+insert into Users values (4, 1, "Chris", "Wallerstein", "wallersteinc1@montclair.edu", "31100 Broad Beach Road", "Beverly Hills", "CA", "90210", "$2y$10$p9V.MBZIPGewwxTkE7RcEeU0vImGe78UU1k5MLuWDZR3pVX1bYpU2");
 select * from Users;
 
-insert into Employee values (2, "123456789", "2017-04-15", 60000);
+insert into Employee values (3, "123456789", "2017-04-15", 60000);
 select * from Employee;
 
 insert into Customer values (4, "2018-10-20", "By credit card");
