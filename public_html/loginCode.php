@@ -55,6 +55,8 @@ if (isset($_POST["btnLogin"])) {  //check if user accessed page correctly
             exit();
         }
 
+        $_SESSION['UserID'] = $row['UserID'];
+
         if ($row["RoleID"] == ADMIN_ROLE) {
             $_SESSION['AdminUser'] = $row["Email"];
             $_SESSION['Role'] = $row["RoleID"];
