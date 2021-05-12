@@ -9,9 +9,8 @@
 <main id='main-holder'>
 
     <?php
+    session_start();
     require_once "connection.php";
-
-    $_SESSION['UserID'] = 4;
 
     if (!isset($_SESSION['UserID'])){
         echo 'User must be logged in to edit account';
