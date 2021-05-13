@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-    <meta charset='UTF-8'>
-    <title>Register</title>
-    <link rel='stylesheet' href='css/register-page.css'>
-</head>
-<body>
-<main id='main-holder'>
-
     <?php
+    include_once 'heading.php';
     session_start();
     require_once "connection.php";
 
@@ -19,7 +10,7 @@
         list($email, $firstName, $lastName, $street, $city, $state, $zip, $billingMethod) =
             getUserDetails($_SESSION['UserID'], $conn);
         echo "
-    <h2 class='text-center'>Edit Account</h2>
+    <h3 class='text-center'>Edit Account</h3>
 
     <form id='login-form' action='editAccountCode.php' method='POST'>
 
