@@ -7,17 +7,14 @@ session_start();
     <meta charset="UTF-8">
     <title>Drum Center World</title>
     <link rel="stylesheet" type="text/css" href="css/home-styles.css"/>
-    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav id="navigationbar"">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Drum Center World</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="index.php">Home</a></li>
+
+        <ul>
+            <li><a href="index.php">Home</a></li>
             <?php
             if (isset($_SESSION["LoginUser"])) {
                 echo "<li><a href='Logout.php'>Log Out</a></li>";
@@ -52,3 +49,4 @@ session_start();
         </ul>
     </div>
 </nav>
+</body>

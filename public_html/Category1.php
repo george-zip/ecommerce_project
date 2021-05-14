@@ -10,7 +10,7 @@ include_once'heading.php';  //navigation menu will be on all web pages
         $_SESSION["CategoryVal"]=$_GET["action"];
     }
 
-    else {
+    else if (!isset($_SESSION["CategoryVal"])){
         //go back to home so user can select a category
         header("location:index.php");
         exit();
