@@ -26,7 +26,7 @@ if(isset($_SESSION['LoginUser']) && isset($_POST["btn-order"]) && isset($_SESSIO
             $query = "SELECT AvailableQty  FROM product WHERE ProductID=" . $id . ";";
             $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt, $query)) {
-                echo nl2br("Inventory sql statement failed\n";
+                echo nl2br("Inventory sql statement failed\n");
             }
             else {
                 mysqli_stmt_execute($stmt);
@@ -36,7 +36,7 @@ if(isset($_SESSION['LoginUser']) && isset($_POST["btn-order"]) && isset($_SESSIO
                 $QtyAvail = $row["AvailableQty"] - $qty;
                 $query = "UPDATE product SET AvailableQty = $QtyAvail WHERE ProductID=" . $id . ";";
                 if (!mysqli_stmt_prepare($stmt, $query)) {
-                    echo nl2br("Inventory adjusted\n";
+                    echo nl2br("Inventory adjusted\n");
                 } else {
                     mysqli_stmt_execute($stmt);
                 }
@@ -44,7 +44,7 @@ if(isset($_SESSION['LoginUser']) && isset($_POST["btn-order"]) && isset($_SESSIO
         }
         //Clear the shopping cart
         unset($_SESSION["shoppingcart"]);
-        echo nl2br("Order items created successfully\n";
+        echo nl2br("Order items created successfully\n");
     }
 
 }
@@ -54,8 +54,8 @@ function GenerateOrder($conn,$custID1)
     //insert record into customerorder table
     $query = "INSERT INTO customerorder (CustomerID,LastUpdate) VALUES ('$custID1', '2021-05-08')";
     if (mysqli_query($conn, $query)) {
-        echo nl2br("Order created successfully\n";
-        echo '<a href="index.php">Home</a>';
+        echo nl2br("Order created successfully\n");
+        echo '<a href="../public_html">Home</a>';
         return true;
     } else {
         echo "Error: " . $query . "<br>" . mysqli_connect_error($conn);
