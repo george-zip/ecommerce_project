@@ -3,16 +3,19 @@
 if (isset($_POST['submit'])) {
     $newFileName=$_POST['filename'];
     if (empty($newFileName)) {
-        $newFileName="category";  //default value
+        $newFileName="category";  //default value of file name
     } else{
         $newFileName=strtolower(str_replace(" ", "-",$newFileName));
     }
+    //retrieve the product attributes entered by employee
+    $imageCategory = $_POST['category'];
     $imageTitle = $_POST['filetitle'];
     $imageDesc = $_POST['filedesc'];
-   $imagePrice = $_POST['fileprice'];
+    $imagePrice = $_POST['fileprice'];
     $imagePrice2 = (float)$imagePrice;
-    $imageQuantity = $_POST['filequantity'];
+    $imageQuantity = $_POST['filequantity'];  //Quantity to put into stock
     $imageQuantity2 = (int)$imageQuantity;
+
 
     $file = $_FILES['file'];
     $fileName = $file["name"];
@@ -61,7 +64,7 @@ if (isset($_POST['submit'])) {
                             }
                             else {
                                 echo "'$imageTitle'.'$imageDesc'.'$imageFullName'";
-                                mysqli_stmt_bind_param($stmt, "sssid",$imageTitle,$imageDesc,$imageFullName,$imageQuantity2,$imagePrice2 );
+                                mysqli_stmt_bind_param($stmt, "sssid",$imageCategory,$imageDesc,$imageFullName,$imageQuantity2,$imagePrice2 );
                                 mysqli_stmt_execute($stmt);
                                 move_uploaded_file($fileTempName,$fileDest);  //move actual image
                                 header("Location: ../public_html/Category1.php?message=fileload");

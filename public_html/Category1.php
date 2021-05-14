@@ -6,6 +6,17 @@ include_once'heading.php';  //navigation menu will be on all web pages
         header("location:Login.php");
         exit();
     }
+    if(isset($_GET["action"])) {  //category to be retrieved
+        $_SESSION["CategoryVal"]=$_GET["action"];
+    }
+
+    else {
+        //go back to home so user can select a category
+        header("location:index.php");
+        exit();
+    }
+    //echo "Session Category: " .$_SESSION['CategoryVal'];
+
 ?>
 
 <main>
@@ -13,48 +24,73 @@ include_once'heading.php';  //navigation menu will be on all web pages
     <section class="category-links">
         <div class="wrapper">
 
-            <h2>Category 1</h2>
+            <h2>Category <?php echo $_SESSION["CategoryVal"];?></h2>
             <div class= "category-container">
-        <!--     start here -->
                 <?php
                 include_once 'connection.php';
-                          $query = "SELECT * FROM product;";  //26:16
-                            $stmt=mysqli_stmt_init($conn);
-                            if(!mysqli_stmt_prepare($stmt,$query)){
-                                echo "Flex Box Query failed";
-                            }
-                            else {
-                                mysqli_stmt_execute($stmt);
-                                $result = mysqli_stmt_get_result($stmt);
-                                while ($row = mysqli_fetch_assoc($result)) { //display all products
+                          //retrieve and display inventory when user navigates to product page
+                //only display add to cart if the user is a customer
+                if (isset($_SESSION['Role']) && ($_SESSION['Role']==1)) {
+                    $query = "SELECT * FROM product WHERE Category=" . $_SESSION["CategoryVal"] . ";";  //26:16
 
-                                    echo '
-                                                <a href="#">
-                                                <form action="../includes/shoppingcarttest.php" method="POST">
-                                                <div width="25px" style="background-image: url(images/category/' . $row["PhotoLink"] . ');"></div>
-                                                <h3>' . $row["Category"] . '</h3>
-                                                <input type="text" name="productid" value="'. $row["ProductID"] . '">
-                                                <input type="text" name="productdescr" value="'. $row["Description"] . '">
-                                                <input type="text" name="productprice" value="'. $row["Price"] . '">
-                                                <input type="text" name="productquantity" value="'. $row["AvailableQty"] . '">
-                                                <input type="submit" name="add_to_cart" value="Add To Cart">
-                                                </form>
-                                                </a>
-                                      ';
 
-                                }
+                    $stmt = mysqli_stmt_init($conn);
+                    if (!mysqli_stmt_prepare($stmt, $query)) {
+                        echo "Flex Box Query failed";
+                    } else {
+                        mysqli_stmt_execute($stmt);
+                        $result = mysqli_stmt_get_result($stmt);
+                        while ($row = mysqli_fetch_assoc($result)) { //display all products
+                            //show the product fields from database in text boxes
+                            //when a user adds a product add it to the shopping cart
+                            echo '
+                                <a href="#">
+                                <form action="../includes/shoppingcarttest.php" method="POST">
+                                <div width="25px" style="background-image: url(images/category/' . $row["PhotoLink"] . ');"></div>
+                                <h3>' . $row["Description"] . '</h3>
+                                <input type="hidden" name="productid" value="' . $row["ProductID"] . '">
+                                <input type="hidden" name="productdescr" value="' . $row["Description"] . '">
+                                <input type="text" name="productprice" readonly value="' . $row["Price"] . '">
+                                <input type="number" style="margin-top:4px" name="productquantity" min="1" placeholder="Quantity">
+                                <input style="margin-top:10px; margin-bottom:10px" type="submit" name="add_to_cart" value="Add To Cart">
+                                
+
+                             </form>
+                                </a>  ';
+                        }
+                        if (isset($_GET['message'])) {
+                            if ($_GET['message'] == "alreadyincart") {
+                                //$value = $_GET['message'];
+                                echo "<p>already added to Cart</p>";
                             }
+                            if ($_GET['message'] == "addedtocart") {
+                                //$value = $_GET['message'];
+                                echo "<p>Added to Cart</p>";
+                            }
+                            if ($_GET['message'] == "outofstock") {
+                                //$value = $_GET['message'];
+                                echo "<p>Out of Stock</p>";
+                            }
+                        }
+                    }
+                }
                             ?>
-        <!--     end here -->
 
     </div>
         </div>
 
         <?php
-        //echo "Session ".$_SESSION['Role'];
+        //if the logged in user is an employee, display form to add items.
+        //user will type the product description
         if (isset($_SESSION['Role']) && ($_SESSION['Role']==3 || $_SESSION['Role']==4)){
             echo '<div class="category-upload">
                     <form action="../includes/category-upload.inc.php" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="category" value="';
+
+        //echo $_GET["action"];  //get the category
+            echo $_SESSION["CategoryVal"];  //get the category
+            echo '">';
+            echo'
                     <input type="text" name="filename" placeholder="File name">
                     <input type="text" name="filetitle" placeholder="Image title">
                     <input type="text" name="filedesc" placeholder="Image description">
@@ -73,42 +109,10 @@ include_once'heading.php';  //navigation menu will be on all web pages
 </main>
 
 
-<table margins="10px" style="width:25%"  border="1px solid black"  border-collapse="collapse">
-    <tr>
-        <th>Item ID</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Amount</th>
-    </tr>
-<?php
 
-    if(!empty($_SESSION["shoppingcart"])){
-        //print_r($_SESSION["shoppingcart"]);
 
-        $total = 0;  //total value of shopping cart
-        foreach($_SESSION["shoppingcart"] as $keys=>$values){
-           // echo $values["item_id"];
-           // print_r($values["item_id"]);
 
-?>
-<tr>
-    <td><?php echo $values["item_id"]; ?>
-    <td><?php echo $values["description"]; ?>
-    <td align="right">$<?php echo number_format($values["price"],2); ?>
-    <td align="right"><?php echo $values["quantity"]; ?>
-    <td align="right">$<?php echo number_format($values["quantity"] * $values["price"],2); ?>
-</tr>
 
-    <?php
-            $total = $total + ($values["quantity"] * $values["price"]);
-    }}
-?>
-    <tr>
-        <td colspan="4" align ="right">Total</td>
-        <td align="right">$<?php echo number_format($total,2); ?></td>
-    </tr>
-</table>
 
 <div class="wrapper">
     <footer>
