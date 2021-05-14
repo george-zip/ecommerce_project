@@ -8,26 +8,25 @@
         </section>
 
         <section class="categories">
+                <div>
+                    <h3>
 
-
-                <div>
-                    <h3>
-                        <a href="Category1.php">Category1</a>
+                        <a href="Category1.php?action=<?php echo "1";?>">Category 1</a>
                     </h3>
                 </div>
                 <div>
                     <h3>
-                        Category 2
+                        <a href="Category1.php?action=<?php echo "2";?>">Category 2</a>
                     </h3>
                 </div>
                 <div>
                     <h3>
-                        Category 3
+                        <a href="Category1.php?action=<?php echo "3";?>">Category 3</a>
                     </h3>
                 </div>
                 <div>
                     <h3>
-                        Category 4
+                        <a href="Category1.php?action=<?php echo "4";?>">Category 4</a>
                     </h3>
                 </div>
 
