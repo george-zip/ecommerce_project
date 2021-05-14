@@ -14,11 +14,11 @@ include_once'heading.php';  //navigation menu will be on all web pages
         <th>Remove</th>
     </tr>
     <?php
-
+$total=0;
     if(!empty($_SESSION["shoppingcart"])){
         //print_r($_SESSION["shoppingcart"]);
 
-        $total = 0;  //total value of shopping cart
+       // $total = 0;  //total value of shopping cart
         foreach($_SESSION["shoppingcart"] as $keys=>$values){
             // echo $values["item_id"];
             // print_r($values["item_id"]);
@@ -55,7 +55,6 @@ include_once'heading.php';  //navigation menu will be on all web pages
 
 <?php
 if(isset($_GET["action"])){
-    echo "got here";
     if($_GET["action"] =="delete")
     {
         foreach($_SESSION["shoppingcart"] as $keys => $values)
