@@ -1,5 +1,7 @@
 <?php
 session_start();  //enables setting up session variables
+error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
 require_once "connection.php";
 
 const OWNER_ROLE = 4;
@@ -11,7 +13,7 @@ if (isset($_POST["btnLogin"])) {  //check if user accessed page correctly
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    if (missinglogindata($email, $password,) !== false)  //check for missing form data
+    if (missinglogindata($email, $password) !== false)  //check for missing form data
     {
         header("location:login.php?message=missinglogin"); //send message
         exit();
@@ -23,15 +25,12 @@ if (isset($_POST["btnLogin"])) {  //check if user accessed page correctly
         exit();
     }
 
-    //$query = "SELECT * FROM users Where Username='$username' AND Password='$password'";
-    //$query = "SELECT * FROM users Where Email='$email'";
-
-    $qry = "SELECT * from users WHERE email = ?;";
+    $qry = "SELECT * from Users WHERE Email = ?;";
 
     $value = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($value, $qry)) {  //check if query failed
         mysqli_stmt_close($value);
-       header("location:login.php?message=badquery"); //send message
+        header("location:login.php?message=badquery"); //send message
         exit();
     }
 
@@ -44,10 +43,7 @@ if (isset($_POST["btnLogin"])) {  //check if user accessed page correctly
     if ($row) {
 
         $hashedPassword = $row["UserPassword"]; //get password returned from query
-        echo  nl2br("password in db  $hashedPassword\n");
         $userPassword1 = password_verify($password, $hashedPassword); //returns boolean
-        echo  nl2br("password entered $password\n");
-        echo  nl2br("password boolean $userPassword1\n");
         if (!$userPassword1) {
             mysqli_stmt_close($value);
             echo "passwords don't match";
@@ -60,26 +56,22 @@ if (isset($_POST["btnLogin"])) {  //check if user accessed page correctly
 
         if ($row["RoleID"] == ADMIN_ROLE) {
             $_SESSION['AdminUser'] = $row["Email"];
-            //header('Location:admin.php');
             header('Location:index.php');
 
         } else if ($row["RoleID"] == CUSTOMER_ROLE) {
             $_SESSION['LoginUser'] = $row["Email"];
             $_SESSION['LoginUserId'] = $row["UserID"];  //needed to create order
             $_SESSION['Name'] = $row["FirstName"]." ".$row["LastName"];
-            //header('Location:user.php');
             header('Location:index.php');
         }
 
         else if ($row["RoleID"] == EMPLOYEE_ROLE) {
             $_SESSION['LoginUser'] = $row["Email"];
-            //header('Location:employee.php');
             header('Location:index.php');
         }
 
         else if ($row["RoleID"] == OWNER_ROLE) {
             $_SESSION['LoginUser'] = $row["Email"];
-           // header('Location:owner.php');
             header('Location:index.php');
         }
         mysqli_stmt_close($value);
