@@ -1,8 +1,3 @@
-drop database if exists DrumCenterWorld;
-create database if not exists DrumCenterWorld;
-
-use DrumCenterWorld;
-
 create table Role
 (
     RoleID          int unsigned auto_increment not null,
@@ -33,9 +28,7 @@ create table Employee
     HireDate   date         not null,
     Salary     float(8, 2)  not null,
     primary key (EmployeeID),
-    foreign key (EmployeeID) references Users (UserID) on delete cascade,
-    check (Salary > 0.0),
-    check (HireDate > '2015-01-01')
+    foreign key (EmployeeID) references Users (UserID) on delete cascade
 );
 
 create table Customer
@@ -44,8 +37,7 @@ create table Customer
     JoinDate      date         not null,
     BillingMethod varchar(50)  not null,
     primary key (CustomerID),
-    foreign key (CustomerID) references Users (UserID) on delete cascade,
-    check (JoinDate > '2015-01-01')
+    foreign key (CustomerID) references Users (UserID) on delete cascade
 );
 
 create table CustomerOrder
@@ -54,8 +46,7 @@ create table CustomerOrder
     CustomerID int unsigned                not null,
     LastUpdate datetime                    not null,
     primary key (OrderID),
-    foreign key (CustomerID) references Customer (CustomerID),
-    check (LastUpdate > '2015-01-01')
+    foreign key (CustomerID) references Customer (CustomerID)
 );
 
 create table Product
@@ -66,9 +57,7 @@ create table Product
     PhotoLink    varchar(120)                not null,
     AvailableQty smallint unsigned           not null,
     Price        float(6, 2)                 not null,
-    primary key (ProductID),
-    check (AvailableQty >= 0),
-    check (Price > 0.0)
+    primary key (ProductID)
 );
 
 create table Items
@@ -77,11 +66,5 @@ create table Items
     ProductID int unsigned not null,
     OrderQty  int unsigned not null,
     foreign key (OrderID) references CustomerOrder (OrderID) on delete cascade,
-    foreign key (ProductID) references Product (ProductID) on delete restrict,
-    check (OrderQty > 0.0)
+    foreign key (ProductID) references Product (ProductID) on delete restrict
 );
-
-drop user if exists 'e_commerce'@'localhost';
-create user 'e_commerce'@'localhost' identified by 'e_commerce';
-grant all privileges on DrumCenterWorld.* to 'e_commerce'@'localhost';
-flush privileges;
