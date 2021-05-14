@@ -21,10 +21,12 @@ session_start();
             <?php
             if (isset($_SESSION["LoginUser"])) {
                 echo "<li><a href='Logout.php'>Log Out</a></li>";
-                echo "<li><a href='Checkout.php'>Cart</a></li>";
                 if (isset($_SESSION["Role"]) and $_SESSION["Role"] == 1) {
+                    echo "<li><a href='Search.php'>Search Inventory</a></li>";
                     echo "<li><a href='EditAccount.php'>Edit Account</a></li>";
-                } else {
+                    echo "<li><a href='Checkout.php'>Cart</a></li>";
+                }
+                if (isset($_SESSION["Role"]) and $_SESSION["Role"] == 2) {
                     echo "<li><a href='AdminUsers.php'>Administration</a></li>";
                 }
             } else {
