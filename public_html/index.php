@@ -32,13 +32,4 @@
                 </div>
 
         </section>
-
-        <section class="options">
-            <div>
-                <h3>
-                    <a href="EditAccount.php">Edit Account</a>
-                </h3>
-            </div>
-        </section>
-
 </body>

@@ -33,28 +33,28 @@ select * from CustomerOrder;
 insert into Product values (1,
                             "Drum Kit",
                             "Gretsch Drums Renown RN2-R643 3-piece",
-                            "http://www.vintageludwigdrums.com/images/shop/66_clubdate_blackoysterpearl.jpg",
+                            "drum_kit.jpeg",
                             1,
                             1429.00);
 
 insert into Product values (2,
                             "Instructional DVD",
                             "Ultimate Beginner Series - Drum Basics",
-                            "https://images-na.ssl-images-amazon.com/images/I/51v1PdbyKvL.jpg",
+                            "dvd.jpeg",
                             15,
                             22.99);
 
 insert into Product values (3,
                             "Drumsticks",
                             "Vic Firth American Classic Drumsticks 6-pack",
-                            "https://images-na.ssl-images-amazon.com/images/I/41lN7LFnzPL._AC_.jpg",
+                            "drum_sticks.jpeg",
                             40,
                             9.99);
 
 insert into Product values (4,
                             "Cymbals",
                             "Sabian SBR 10 inch Splash Cymbal",
-                            "https://images-na.ssl-images-amazon.com/images/I/71aH-ovzuBL._AC_SL1400_.jpg",
+                            "cymbal.jpeg",
                             5,
                             28.99);
 
