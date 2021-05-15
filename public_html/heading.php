@@ -7,7 +7,8 @@ session_start();
     <meta charset="UTF-8">
     <title>Drum Center World</title>
     <link rel="stylesheet" type="text/css" href="css/home-styles.css"/>
-
+    <!-- if you remove the below script, it will break the ability to add to the cart from the search screen -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <nav id="navigationbar"">
