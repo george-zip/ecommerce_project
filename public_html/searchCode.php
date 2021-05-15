@@ -33,12 +33,11 @@ if(isset($_POST["btnSearch"])) {
         echo "<th scope='row'>" . $row_num . "</th>";
         echo "<td>" . $row['Category'] . "</td>";
         echo "<td>" . $row['Description'] . "</td>";
-        echo "<td>";
+        echo "<td id=" . $row['Price'] . ">";
         printf("$%.2f",$row['Price']);
         echo "</td>";
         $productID = $row['ProductID'];
         echo "<td><input type='number' id=$productID name=$productID placeholder='0' value='0'>";
-//        <!-- <button type='button' class='btn btn-primary' name=$productID onclick='addToCart(this)'>Add</button> -->
         echo "</td></tr>";
         $row_num++;
     }
@@ -51,16 +50,18 @@ if(isset($_POST["btnSearch"])) {
     <script>
         function addItems() {
             var table = document.getElementById('search-results');
+            var cart = [];
             for (var i = 1, row; row = table.rows[i]; i++) {
-               var quantity = row.cells[4].children[0].value;
+               var quantity = parseInt(row.cells[4].children[0].value);
+               var price = parseFloat(row.cells[3].id);
+               var description = row.cells[1].innerHTML;
                var productID = row.cells[4].children[0].id;
+               if(quantity > 0) {
+                   cart.push([productID, description, price, quantity]);
+               }
             }
-//            $.post('searchCode.php', { search-term: 'stick' },
-//                function(data) {
-//                    $(#search-results)(0).reset();
-//                }
-//            );
-            window.alert('done!');
+            var elements = JSON.stringify(cart);
+            $.post('addToCart.php', {cart: elements});
         }
     </script>";
 
