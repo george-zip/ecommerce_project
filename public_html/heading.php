@@ -18,9 +18,10 @@ session_start();
             <?php
             if (isset($_SESSION["LoginUser"])) {
                 echo "<li><a href='Logout.php'>Log Out</a></li>";
-                if (isset($_SESSION["Role"]) and $_SESSION["Role"] == 1) {
+                if (isset($_SESSION["Role"]) && $_SESSION["Role"] == 1) {
                     echo "<li><a href='Search.php'>Search Inventory</a></li>";
                     echo "<li><a href='EditAccount.php'>Edit Account</a></li>";
+                    echo "<li><a href='CustomerOrders.php'>Show Orders</a></li>";
                     echo "<li><a href='Checkout.php'>Cart</a></li>";
                 }
 
@@ -28,10 +29,16 @@ session_start();
                 echo "<li><a href='Login.php'>Log In</a></li>";
                 echo "<li><a href='Register.php'>Register</a></li>";
             }
+            if (isset($_SESSION["Role"]) && $_SESSION["Role"] == 3){
+                echo "<li><a href='indexDelete.php'>Delete Product</a></li>";
+                echo "<li><a href='indexModify.php'>Modify Product</a></li>";
+            }
             ?>
 
             <li><a href='AdminUsers.php'>Administration</a></li>"
-
+        </ul>
+    </div>
+</nav>
 
 <?php
             //if (isset($_SESSION['AdminLogged']) && $_SESSION['AdminLogged'] == true){
@@ -46,7 +53,4 @@ session_start();
 //     echo "<li>$temp<li>";
  //}
  ?>
-        </ul>
-    </div>
-</nav>
-</body>
+

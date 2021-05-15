@@ -25,6 +25,8 @@ include_once'heading.php';  //navigation menu will be on all web pages
         <div class="wrapper">
 
             <h2>Category <?php echo $_SESSION["CategoryVal"];?></h2>
+            <br>
+        </div>
             <div class= "category-container">
                 <?php
                 include_once 'connection.php';
@@ -50,8 +52,15 @@ include_once'heading.php';  //navigation menu will be on all web pages
                                 <h3>' . $row["Description"] . '</h3>
                                 <input type="hidden" name="productid" value="' . $row["ProductID"] . '">
                                 <input type="hidden" name="productdescr" value="' . $row["Description"] . '">
-                                <input type="text" name="productprice" readonly value="' . $row["Price"] . '">
-                                <input type="number" style="margin-top:4px" name="productquantity" min="1" placeholder="Quantity">
+                                 <table>
+                                 <tr>
+                                    <td><label for="productprice">Price:</label></td>
+                                   <td>  <input type="text" name="productprice" readonly value="' . $row["Price"] . '"></td>
+                                 <tr>
+                                    <td><label for="productquantity">Qty:  </label></td>
+                                    <td><input type="number" style="margin-top:4px" name="productquantity" min="1" value=1></td>
+                                </tr>
+                                </table>
                                 <input style="margin-top:10px; margin-bottom:10px" type="submit" name="add_to_cart" value="Add To Cart">
                                 
 
@@ -91,13 +100,13 @@ include_once'heading.php';  //navigation menu will be on all web pages
             echo $_SESSION["CategoryVal"];  //get the category
             echo '">';
             echo'
-                    <input type="text" name="filename" placeholder="File name">
-                    <input type="text" name="filetitle" placeholder="Image title">
+                   <input type="text" name="filename" placeholder="File name">
+                   <input type="text" name="filetitle" placeholder="Image title">
                     <input type="text" name="filedesc" placeholder="Image description">
                     <input type="text" name="fileprice" placeholder="Item price">
                     <input type="text" name="filequantity" placeholder="Quantity">
                     <input type="file" name="file">
-                    <button type="submit" name="submit">UPLOAD</button>
+                    <button type="submit" name="submit">Upload</button>
                 </form>
             </div>';
         }

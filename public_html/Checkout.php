@@ -4,7 +4,7 @@ include_once'heading.php';  //navigation menu will be on all web pages
 ?>
 <main>
     <form form action="../includes/CreateOrder.php" method="POST">
-<table margins="10px" style="width:25%"  border="1px solid black"  border-collapse="collapse">
+<table  style="width:25%"  border="1px solid black"  border-collapse="collapse">
     <tr>
         <th>Item ID</th>
         <th>Description</th>

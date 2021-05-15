@@ -62,6 +62,7 @@ if (isset($_POST["btnLogin"])) {  //check if user accessed page correctly
             $_SESSION['LoginUser'] = $row["Email"];
             $_SESSION['LoginUserId'] = $row["UserID"];  //needed to create order
             $_SESSION['Name'] = $row["FirstName"]." ".$row["LastName"];
+
             header('Location:index.php');
         }
 
