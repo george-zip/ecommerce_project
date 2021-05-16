@@ -24,9 +24,13 @@ if (isset($_POST["btnUserAdmin"])) {//&& isset($_SESSION["AdminLogged"]) &&
     else if (trim($role)=="owner" ){
         $role = 4;
     }
+    else if (trim($role)=="admin" ){
+        $role = 2;
+    }
+
     $salary = $_POST["salary"];
     $ssn = $_POST["ssn"];
-    //$hiredate = $_POST["hiredate"];
+    $hiredate = $_POST["hiredate"];
     $firstname = $_POST["firstname"];
     $lastname = $_POST["lastname"];
     $street = $_POST["street"];
@@ -88,7 +92,7 @@ if (isset($_POST["btnUserAdmin"])) {//&& isset($_SESSION["AdminLogged"]) &&
         $last_id = mysqli_insert_id($conn);  //retrieves auto increment table value
         echo $last_id;
         $query2 = "INSERT INTO employee (EmployeeID,SSN,HireDate,Salary) VALUES
-                    ('$last_id','$ssn','2021-05-08',$salary)";
+                    ('$last_id','$ssn','$hiredate','$salary')";
         mysqli_query($conn, $query2); //populate employee table
         mysqli_commit($conn);
         echo "New account created successfully";
@@ -192,6 +196,10 @@ function checkRole($role)
             break;
         case 4:
             //$usertype = 4;
+            return false;
+            break;
+        case 2:
+
             return false;
             break;
         default:

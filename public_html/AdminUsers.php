@@ -37,9 +37,10 @@ require_auth();
             <form id="login-form" action="adminUsersCode.php" method="POST">
                 <div class="form-group">
                 <select required name="role" class="form-control" placeholder="Select Role">
-                    <option value=""disabled selected hidden>Select User Type</option>
+                    <option value="disabled selected hidden">Select User Type</option>
                     <option value="employee">Employee</option>
                     <option value="owner">Owner</option>
+                    <option value="admin">Admin</option>
                 </select>
                 </div>
 
@@ -55,7 +56,7 @@ require_auth();
 
                 <div class="form-group">
 
-                    <input type=text" name="hiredate" class="
+                    <input type="date" name="hiredate" class="
                     form-control" placeholder="Enter Hire Date">
                 </div>
 
@@ -80,6 +81,8 @@ require_auth();
                         <input type=text" name="lastname" class="form-control" placeholder="Enter Last Name">
                 </div>
 
+
+
                 <div class="form-group">
                         <!--<label>Street</label> -->
                         <input type=text" name="street" class="form-control" placeholder="Enter Street Address">
@@ -99,7 +102,7 @@ require_auth();
                     <!-- <label>Zip Code</label>-->
                     <input type=text" name="zip" class="form-control" placeholder="Enter Zip Code">
                 </div>
-                    <input type="submit" name="btnUserAdmin" class="btn-primary" value="UserAdmin">
+                    <input type="submit" name="btnUserAdmin" class="btn-primary" value="Create User">
 
             </form>
 
