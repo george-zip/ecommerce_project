@@ -45,17 +45,24 @@ include_once'heading.php';  //navigation menu will be on all web pages
                             //when a user adds a product add it to the shopping cart
                             echo '
                                 <a href="#">
-                                <form action="../includes/deleteinventory.inc..php" method="POST">
+                                <form action="../includes/modifyinventory.inc.php" method="POST">
                                 <div width="25px" style="background-image: url(images/category/' . $row["PhotoLink"] . ');"></div>
                                 <h3>' . $row["Description"] . '</h3>
-                                <input type="hidden" name="productid" value="' . $row["ProductID"] . '">
+                                <table>
+                                <input type="text" name="productid" value="' . $row["ProductID"] . '">
                                 <input type="hidden" name="productdescr" value="' . $row["Description"] . '">
-                                <input type="text" name="productprice" value="' . $row["Price"] . '">
+                               <tr>
+                                <td><label for="productprice">Price:</label></td>
+                                <td><input type="text" name="productprice" value="' . $row["Price"] . '"></td>
+                                </tr>
                                 <input type="hidden" name="filenames" readonly value="' . $row["PhotoLink"] . '">
-                                <input type="text" style="margin-top:4px" name="productquantity" min="1" placeholder="Quantity">
-                                <input style="margin-top:10px; margin-bottom:10px" type="submit" name="submit" value="Delete Item">
+                                <tr>
+                                 <td><label for="productquantity">Qty:  </label></td>
+                               <td> <input type="text" style="margin-top:4px" name="productquantity" min="1" ></td>
+                               </tr>
+                                </table>
+                                <input style="margin-top:10px; margin-bottom:10px" type="submit" name="submit2" value="Modify Item">
                                 
-
                              </form>
                                 </a>  ';
                         }
@@ -91,12 +98,5 @@ include_once'heading.php';  //navigation menu will be on all web pages
 
 
 
-<div class="wrapper">
-    <footer>
-        <ul>
-<!--            <li></li>-->
-        </ul>
-    </footer>
-</div>
 </body>
 </html>

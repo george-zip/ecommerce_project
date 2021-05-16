@@ -14,7 +14,7 @@ if (isset($_SESSION["LoginUser"]) && isset($_SESSION["Role"]) && isset($_SESSION
        Items.OrderQty*product.Price as Total 
         From users,customer,customerorder,items,product 
         where users.UserID='$userID' and users.UserID = Customer.CustomerID and 
-              Customerorder.OrderID=items.OrderID and items.ProductID=product.ProductID;");
+              Customerorder.OrderID=items.OrderID and items.ProductID=product.ProductID order by Customerorder.OrderID;");
     $all_property = array();  //declare an array for saving property
 
 //show properties

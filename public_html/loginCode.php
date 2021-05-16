@@ -34,6 +34,8 @@ if (isset($_POST["btnLogin"])) {  //check if user accessed page correctly
         exit();
     }
 
+
+
     mysqli_stmt_bind_param($value, "s", $email);
 
     mysqli_stmt_execute($value);
