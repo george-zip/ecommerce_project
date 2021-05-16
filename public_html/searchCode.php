@@ -57,8 +57,9 @@ if(isset($_POST["btnSearch"])) {
                var price = parseFloat(row.cells[3].id);
                var description = row.cells[1].innerHTML;
                var productID = row.cells[4].children[0].id;
+               var available = row.cells[4].children[0].max;
                if(quantity > 0) {
-                   cart.push([productID, description, price, quantity]);
+                   cart.push([productID, description, price, quantity, available]);
                }
             }
             var elements = JSON.stringify(cart);
