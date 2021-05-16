@@ -58,7 +58,7 @@ include_once'heading.php';  //navigation menu will be on all web pages
                                 <input type="hidden" name="filenames" readonly value="' . $row["PhotoLink"] . '">
                                 <tr>
                                  <td><label for="productquantity">Qty:  </label></td>
-                               <td> <input type="text" style="margin-top:4px" name="productquantity" value="' . $row["AvailableQty"] . '"></td>
+                               <td> <input type="number" style="margin-top:4px" name="productquantity" value="' . $row["AvailableQty"] . '"></td>
                                </tr>
                                 </table>
                                 <input style="margin-top:10px; margin-bottom:10px" type="submit" name="submit2" value="Modify Item">
@@ -69,7 +69,7 @@ include_once'heading.php';  //navigation menu will be on all web pages
                         if (isset($_GET['message'])) {
                             if ($_GET['message'] == "modified") {
                                 //$value = $_GET['message'];
-                                echo "<p>Product quantity modified</p>";
+                                echo "<p>Product modified</p>";
                             }
                             if ($_GET['message'] == "invalidentry") {
                                 //$value = $_GET['message'];
@@ -78,6 +78,10 @@ include_once'heading.php';  //navigation menu will be on all web pages
                             if ($_GET['message'] == "cantmodify") {
                                 //$value = $_GET['message'];
                                 echo "<p>Ordered products can not be modified</p>";
+                            }
+                            if ($_GET['message'] == "quantmodified") {
+                                //$value = $_GET['message'];
+                                echo "<p>Only quantity modified on products wih existing orders</p>";
                             }
                         }
                     }
