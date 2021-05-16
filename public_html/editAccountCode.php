@@ -11,8 +11,9 @@ if(isset($_POST["btnRegister"]) and strlen($_POST["changed"]) > 0) {
 
     $changedAttributes = $_POST["changed"];
 
-    if(attributeChanged("email", $changedAttributes) and
-            $email != $_SESSION['LoginUser']) {
+    if(attributeChanged("email", $changedAttributes)) {
+        echo $email = $_POST["email"];
+
         if (checkEmail($email) !== false)  //check email
         {
             header("location:EditAccount.php?message=errorEmail"); //send message

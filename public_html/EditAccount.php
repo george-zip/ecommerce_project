@@ -50,7 +50,7 @@
 
         <div class='form-group'>
             <!-- <label>Zip Code</label>-->
-            <input type=text' name='zip' class='form-control' onchange='valChange(this)' placeholder=$zip>
+            <input type=text' name='ZipCode' class='form-control' onchange='valChange(this)' placeholder=$zip>
         </div>
 
 
