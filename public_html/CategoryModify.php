@@ -49,7 +49,7 @@ include_once'heading.php';  //navigation menu will be on all web pages
                                 <div width="25px" style="background-image: url(images/category/' . $row["PhotoLink"] . ');"></div>
                                 <h3>' . $row["Description"] . '</h3>
                                 <table>
-                                <input type="text" name="productid" value="' . $row["ProductID"] . '">
+                                <input type="hidden" name="productid" value="' . $row["ProductID"] . '">
                                 <input type="hidden" name="productdescr" value="' . $row["Description"] . '">
                                <tr>
                                 <td><label for="productprice">Price:</label></td>
@@ -58,7 +58,7 @@ include_once'heading.php';  //navigation menu will be on all web pages
                                 <input type="hidden" name="filenames" readonly value="' . $row["PhotoLink"] . '">
                                 <tr>
                                  <td><label for="productquantity">Qty:  </label></td>
-                               <td> <input type="text" style="margin-top:4px" name="productquantity" min="1" ></td>
+                               <td> <input type="text" style="margin-top:4px" name="productquantity" min="1" value="1"></td>
                                </tr>
                                 </table>
                                 <input style="margin-top:10px; margin-bottom:10px" type="submit" name="submit2" value="Modify Item">
