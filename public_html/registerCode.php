@@ -10,7 +10,7 @@ if ($conn==false) {
 //check is user navigated from Register form
 //if not load the register page
 if(isset($_POST["btnRegister"])) {
-    //$username = $_POST["username"];
+
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
     $email = $_POST["email"];
     $firstname = $_POST["firstname"];
@@ -21,10 +21,7 @@ if(isset($_POST["btnRegister"])) {
     $zip = $_POST["zip"];
     $paymentmethod = $_POST["billingmethod"];
 
-    //require_once 'dbh.inc.php'; //48.57
-    //require 'functions.inc.php';
 
-    // echo $username,$password,$email,$firstname,$lastname,$street,$city,$state,$zip;
 
     //check to see if form is complete
     if (missingRegData($email, $password, $firstname, $lastname, $street, $city,
@@ -52,20 +49,24 @@ if(isset($_POST["btnRegister"])) {
                 '$password',1,'$firstname','$lastname','$street','$city','$state','$zip')";
     mysqli_begin_transaction($conn);  //create user in db
     try {
-        //1:21:14
+
         mysqli_query($conn, $query1);  //populate user table
         //if (mysqli_query($conn,$query1)){
         $last_id = mysqli_insert_id($conn);
         echo $last_id;
+
+        $curDate=date("Y/m/d");  //date customer account created
+
         $query2 = "INSERT INTO customer (CustomerID,JoinDate,BillingMethod) VALUES 
-                    ($last_id,'2021-05-08','$paymentmethod')";
+                    ('$last_id','$curDate','$paymentmethod')";
+
+        //($last_id,'2021-05-08','$paymentmethod')";
         mysqli_query($conn, $query2); //populate customer table
         mysqli_commit($conn);
         echo "New User created successfully";
         header("location:Login.php");  //if successful proceed to login page
     }
-        //if (mysqli_query($conn,$query2)){
-        //   echo "New User created successfully";//}
+
 
     catch (mysqli_sql_exception $e) {
         mysqli_rollback($conn);
@@ -77,7 +78,7 @@ if(isset($_POST["btnRegister"])) {
 
 else  {
     //user did not access this page through Register.php
-    //header("location:Register.php");
+
     echo "New User not created successfully";
     exit();
 }

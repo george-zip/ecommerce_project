@@ -38,10 +38,10 @@ if (isset($_POST["btnUserAdmin"])) {//&& isset($_SESSION["AdminLogged"]) &&
     $state = $_POST["state"];
     $zip = $_POST["zip"];
 
-    //require_once 'dbh.inc.php'; //48.57
+    //require_once 'dbh.inc.php';
     //require 'functions.inc.php';
 
-    // echo $username,$password,$email,$firstname,$lastname,$street,$city,$state,$zip;
+
 
     //check to see if form is complete
     if (missingRegData($email, $password, $firstname, $lastname, $street, $city,
@@ -74,11 +74,7 @@ if (isset($_POST["btnUserAdmin"])) {//&& isset($_SESSION["AdminLogged"]) &&
         exit();
     }
 
-    //not currently implemented
-//    if (checkDate(($hiredate) !==false){  ////check that user input a valid role
-//        header("location:adminUsers.php?message=badrole"); //send message
-//        exit();
- //   }
+
 
 //If form data is ok create the user in the db
     $query1 = "INSERT INTO users(UserID,RoleID,FirstName,LastName,Email,
@@ -208,28 +204,4 @@ function checkRole($role)
     }
 }
 
-//function checkDate()
-    //page 347
-    //date checking not implemented yet
-//{
-    //check that user entered a valid date
-//    $mmddyy = explode('/', $_POST['departure_date']);
-//    if (count($mmddyy) != 3) {
-//        echo "ERROR: Invalid Date specified!";
-//        exit;
- //   }
-// handle years like 02 or 95
-//    if ((int)$mmddyy[2] < 100) {
-//        if ((int)$mmddyy[2] > 50) {
-//            $mmddyy[2] = (int)$mmddyy[2] + 1900;
-//        } else if ((int)$mmddyy[2] >= 0) {
-//            $mmddyy[2] = (int)$mmddyy[2] + 2000;
-//        }
-// else it's < 0 and checkdate will catch it
-//    }
-    //if (!checkdate($mmddyy[0], $mmddyy[1], $mmddyy[2])) {
-        //echo "ERROR: Invalid Date specified!";
-    //}
-//}
 
-//Note paramaterized queries preven sql injection by separating code from data

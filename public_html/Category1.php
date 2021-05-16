@@ -3,6 +3,7 @@ include_once'heading.php';  //navigation menu will be on all web pages
 //echo $_SESSION['LoginUser'];
     if(!isset($_SESSION['LoginUser'])){
         //A user must be logged in to see this page
+        // The owner Role =4 cannot access this page
         header("location:Login.php");
         exit();
     }
@@ -23,7 +24,6 @@ include_once'heading.php';  //navigation menu will be on all web pages
     <link rel="stylesheet" href="css/category-style.css">
     <section class="category-links">
         <div class="wrapper">
-
             <h2>Category <?php echo $_SESSION["CategoryVal"];?></h2>
             <br>
         </div>
@@ -91,7 +91,7 @@ include_once'heading.php';  //navigation menu will be on all web pages
         <?php
         //if the logged in user is an employee, display form to add items.
         //user will type the product description
-        if (isset($_SESSION['Role']) && ($_SESSION['Role']==3 || $_SESSION['Role']==4)){
+        if (isset($_SESSION['Role']) && ($_SESSION['Role']==3 )){
             echo '<div class="category-upload">
                     <form action="../includes/category-upload.inc.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="category" value="';

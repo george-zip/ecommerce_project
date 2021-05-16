@@ -1,6 +1,11 @@
 <?php
 //session_start();
 include_once'heading.php';  //navigation menu will be on all web pages
+//only user can access cart
+if  ($_SESSION['Role']!==1 ) {
+    header("location:index.php");
+    exit();
+}
 ?>
 <main>
     <form form action="../includes/CreateOrder.php" method="POST">

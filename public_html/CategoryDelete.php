@@ -29,10 +29,10 @@ include_once'heading.php';  //navigation menu will be on all web pages
             <div class= "category-container">
                 <?php
                 include_once 'connection.php';
-                          //retrieve and display inventory when user navigates to product page
-                //only display add to cart if the user is a customer
-                if (isset($_SESSION['Role']) && ($_SESSION['Role']==3)) {
-                    $query = "SELECT * FROM product WHERE Category=" . $_SESSION["CategoryDelVal"] . ";";  //26:16
+                //retrieve and display inventory when user navigates to product page
+                //The owner and employee can delete a product
+                if (isset($_SESSION['Role']) && (($_SESSION['Role']==3) || $_SESSION['Role']==4)){
+                    $query = "SELECT * FROM product WHERE Category=" . $_SESSION["CategoryDelVal"] . ";";
 
 
                     $stmt = mysqli_stmt_init($conn);
@@ -86,12 +86,5 @@ include_once'heading.php';  //navigation menu will be on all web pages
     </section>
 </main>
 
-<div class="wrapper">
-    <footer>
-        <ul>
-<!--            <li></li>-->
-        </ul>
-    </footer>
-</div>
 </body>
 </html>

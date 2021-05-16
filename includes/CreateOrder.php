@@ -1,6 +1,7 @@
 <?php
 session_start();
-if(isset($_SESSION['LoginUser']) && isset($_POST["btn-order"]) && isset($_SESSION['Role']) && $_SESSION['Role']==1);
+if(isset($_SESSION['LoginUser']) && isset($_POST["btn-order"]) && isset($_SESSION['Role'])
+&& $_SESSION['Role']==1);
 {
     //Check if shopping cart is empty before processing an order
     $custID = $_SESSION['LoginUserId'];
@@ -46,8 +47,12 @@ if(isset($_SESSION['LoginUser']) && isset($_POST["btn-order"]) && isset($_SESSIO
         unset($_SESSION["shoppingcart"]);
         echo nl2br("Order items created successfully\n");
     }
-
+    else{
+        echo "Order creation failed";
+    }
 }
+
+
 function GenerateOrder($conn,$custID1)
 {
     //Generate the order from items in the shopping cart

@@ -30,7 +30,7 @@ include_once'heading.php';  //navigation menu will be on all web pages
                 include_once 'connection.php';
                           //retrieve and display inventory when user navigates to product page
                 //only display add to cart if the user is a customer
-                if (isset($_SESSION['Role']) && ($_SESSION['Role']==3)) {
+                if (isset($_SESSION['Role']) && (($_SESSION['Role']==3) || $_SESSION['Role']==4)){
                     $query = "SELECT * FROM product WHERE Category=" . $_SESSION["CategoryModifyVal"] . ";";  //26:16
 
 
@@ -50,7 +50,7 @@ include_once'heading.php';  //navigation menu will be on all web pages
                                 <h3>' . $row["Description"] . '</h3>
                                 <table>
                                 <input type="hidden" name="productid" value="' . $row["ProductID"] . '">
-                                <input type="hidden" name="productdescr" value="' . $row["Description"] . '">
+                                <input type="hidden" name="productdescr" value="' . $row["PhotoLink"] . '">
                                <tr>
                                 <td><label for="productprice">Price:</label></td>
                                 <td><input type="text" name="productprice" value="' . $row["Price"] . '"></td>
@@ -58,7 +58,7 @@ include_once'heading.php';  //navigation menu will be on all web pages
                                 <input type="hidden" name="filenames" readonly value="' . $row["PhotoLink"] . '">
                                 <tr>
                                  <td><label for="productquantity">Qty:  </label></td>
-                               <td> <input type="text" style="margin-top:4px" name="productquantity" min="1" value="1"></td>
+                               <td> <input type="text" style="margin-top:4px" name="productquantity" value="' . $row["AvailableQty"] . '"></td>
                                </tr>
                                 </table>
                                 <input style="margin-top:10px; margin-bottom:10px" type="submit" name="submit2" value="Modify Item">

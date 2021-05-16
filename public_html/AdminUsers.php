@@ -7,8 +7,9 @@ function require_auth()
 
     header('Cache-Control:no-cache');
 
-
-    $has_supplied_credentials = !(empty($_SERVER['PHP_AUTH_USER']) && empty($_SERVER['PHP_AUTH_PW']));
+//Only someone knowing the mysql login username
+    $has_supplied_credentials = !((empty($_SERVER['PHP_AUTH_USER']) && empty($_SERVER['PHP_AUTH_PW'])) ||
+        (isset($_SESSION["Role"]) && $_SESSION["Role"]==2));
     $is_not_authenticated = (
         !$has_supplied_credentials ||
         $_SERVER['PHP_AUTH_USER'] != $AUTH_USER ||

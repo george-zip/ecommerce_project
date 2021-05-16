@@ -2,10 +2,6 @@
 session_start();
 
 
-
-
-//session_unset();
-//session_destroy();
     if(isset($_POST["add_to_cart"])) {
         //$item_array = array();
         if (isset($_SESSION["shoppingcart"])) {
@@ -17,15 +13,13 @@ session_start();
                     if ($blnValue==true) {
 
                         $count = count($_SESSION["shoppingcart"]);
-                        //                $item_array=array (
-                        //                    'item_id'=>$_POST["productid"],
-                        //                    "description" => $_POST["productdescr"],
-                        //                    "price" => $_POST["productprice"]
+
                         $a = $_POST["productid"];
                         $b = $_POST["productdescr"];
                         $f = $_POST["productprice"];
                         $g = $_POST["productquantity"];
-                        $c = array("item_id" => $a, "description" => $b, "price" => $f, "quantity" => $g);  //shopping cart
+                        $c = array("item_id" => $a, "description" => $b,
+                            "price" => $f, "quantity" => $g);  //shopping cart
                         array_push($_SESSION['shoppingcart'], $c); // Items added to cart  //add item to cart
                         header("Location: ../public_html/Category1.php?message=addedtocart");
                         exit();
@@ -44,11 +38,7 @@ echo $blnValue;
             }
         }
         else {  //if cart is empty create session array
-//            $item_array['id'] = array(
-//                "item_id" => $_POST["productid"],
-//                "description" => $_POST["productdescr"],
-//                "price" => $_POST["productprice"]
-//            );
+
             $blnValue=CheckInventory();
             echo $blnValue;
             if ($blnValue==true) {
@@ -81,15 +71,9 @@ function CheckInventory()
         $result = mysqli_stmt_get_result($stmt);
         $row = mysqli_fetch_assoc($result);
        if ($row["AvailableQty"] >= $_POST["productquantity"]){
-//           $Qty= $row["AvailableQty"]-$_POST["productquantity"];
-//           $query = "UPDATE product SET AvailableQty=$Qty WHERE ProductID=" . $_POST["productid"] . ";";
-//           if (!mysqli_stmt_prepare($stmt, $query)) {
-//               echo "Add to cart failed";
-//           }
-//           else {
-//               mysqli_stmt_execute($stmt);
+
                return true;
-//           }
+
        }
        else {
            return false;

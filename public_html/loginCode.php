@@ -60,7 +60,8 @@ if (isset($_POST["btnLogin"])) {  //check if user accessed page correctly
             $_SESSION['AdminUser'] = $row["Email"];
             header('Location:index.php');
 
-        } else if ($row["RoleID"] == CUSTOMER_ROLE) {
+        }
+        else if ($row["RoleID"] == CUSTOMER_ROLE) {
             $_SESSION['LoginUser'] = $row["Email"];
             $_SESSION['LoginUserId'] = $row["UserID"];  //needed to create order
             $_SESSION['Name'] = $row["FirstName"]." ".$row["LastName"];
@@ -75,6 +76,7 @@ if (isset($_POST["btnLogin"])) {  //check if user accessed page correctly
 
         else if ($row["RoleID"] == OWNER_ROLE) {
             $_SESSION['LoginUser'] = $row["Email"];
+            $_SESSION['Name'] = $row["FirstName"]." ".$row["LastName"];
             header('Location:index.php');
         }
         mysqli_stmt_close($value);

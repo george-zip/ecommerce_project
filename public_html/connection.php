@@ -1,6 +1,6 @@
 <?php
 
-// TODO: Move these params into configuration file
+
 $server="localhost:3306";
 $user="e_commerce";
 $password="e_commerce";
