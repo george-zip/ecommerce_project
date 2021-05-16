@@ -31,32 +31,40 @@ insert into CustomerOrder values (1, 4, "2020-02-20");
 select * from CustomerOrder;
 
 insert into Product values (1,
-                            "Drum Kit",
+                            "1",
                             "Gretsch Drums Renown RN2-R643 3-piece",
                             "drum_kit.jpeg",
                             1,
                             1429.00);
 
 insert into Product values (2,
-                            "Instructional DVD",
+                            "2",
                             "Ultimate Beginner Series - Drum Basics",
                             "dvd.jpeg",
                             15,
                             22.99);
 
 insert into Product values (3,
-                            "Drumsticks",
+                            "3",
                             "Vic Firth American Classic Drumsticks 6-pack",
                             "drum_sticks.jpeg",
                             40,
                             9.99);
 
 insert into Product values (4,
-                            "Cymbals",
+                            "4",
                             "Sabian SBR 10 inch Splash Cymbal",
                             "cymbal.jpeg",
                             5,
                             28.99);
+
+insert into Product values (5,
+                            "1",
+                            "More drums",
+                            "drum_kit.jpeg",
+                            1,
+                            529.00);
+
 
 select * from Product;
 

@@ -26,12 +26,11 @@ if(isset($_POST["btnSearch"])) {
     echo "<br/><br/>";
     echo "<br/><table id='search-results' class='table table-bordered'><caption>Search Results</caption>";
     echo "<tread><tr><th scope='col'>#</th>";
-    echo "<th scope='col'>Category</th><th scope='col'>Description</th><th scope='col'>Price</th>";
+    echo "<th scope='col'>Description</th><th scope='col'>Price</th>";
     echo "<th scope='col'>Quantity</th></tr></tread><tbody>";
     $row_num = 1;
     while($row = mysqli_fetch_assoc($result)) {
         echo "<th scope='row'>" . $row_num . "</th>";
-        echo "<td>" . $row['Category'] . "</td>";
         echo "<td>" . $row['Description'] . "</td>";
         echo "<td id=" . $row['Price'] . ">";
         printf("$%.2f",$row['Price']);
@@ -53,11 +52,11 @@ if(isset($_POST["btnSearch"])) {
             var table = document.getElementById('search-results');
             var cart = [];
             for (var i = 1, row; row = table.rows[i]; i++) {
-               var quantity = parseInt(row.cells[4].children[0].value);
-               var price = parseFloat(row.cells[3].id);
-               var description = row.cells[2].innerHTML;
-               var productID = row.cells[4].children[0].id;
-               var available = row.cells[4].children[0].max;
+               var quantity = parseInt(row.cells[3].children[0].value);
+               var price = parseFloat(row.cells[2].id);
+               var description = row.cells[1].innerHTML;
+               var productID = row.cells[3].children[0].id;
+               var available = row.cells[3].children[0].max;
                if(quantity > 0) {
                    cart.push([productID, description, price, quantity, available]);
                }
