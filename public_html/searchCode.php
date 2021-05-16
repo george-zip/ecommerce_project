@@ -7,7 +7,7 @@ if(isset($_POST["btnSearch"])) {
     $searchTerm = $_POST["search-term"];
     $searchTerm = "%" . $searchTerm . "%";
     $query = "select * from Product 
-        where Category like ? or Description like ?
+        where (Category like ? or Description like ?)
         and AvailableQty > 0
         order by Category";
 
@@ -37,7 +37,8 @@ if(isset($_POST["btnSearch"])) {
         printf("$%.2f",$row['Price']);
         echo "</td>";
         $productID = $row['ProductID'];
-        echo "<td><input type='number' id=$productID name=$productID placeholder='0' value='0'>";
+        $available = $row['AvailableQty'];
+        echo "<td><input type='number' id=$productID name=$productID placeholder='0' value='0' min=0 max=$available>";
         echo "</td></tr>";
         $row_num++;
     }
