@@ -105,7 +105,12 @@ function createUpdateString($postVals, $userID) {
     $changedAttributes = explode(";", $postVals["changed"]);
     foreach ($changedAttributes as $attribute) {
         if(strlen($attribute) > 0) {
-            $updateStr .= $attribute . " = '" . $postVals[$attribute] . "', ";
+            if($attribute == "userpassword") {
+                $password = password_hash($postVals[$attribute], PASSWORD_DEFAULT);
+                $updateStr .= $attribute . " = '" . $password . "', ";
+            } else {
+                $updateStr .= $attribute . " = '" . $postVals[$attribute] . "', ";
+            }
         }
     }
     $updateStr = substr_replace($updateStr, "", -2);
