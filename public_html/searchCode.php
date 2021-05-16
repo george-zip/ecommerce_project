@@ -55,7 +55,7 @@ if(isset($_POST["btnSearch"])) {
             for (var i = 1, row; row = table.rows[i]; i++) {
                var quantity = parseInt(row.cells[4].children[0].value);
                var price = parseFloat(row.cells[3].id);
-               var description = row.cells[1].innerHTML;
+               var description = row.cells[2].innerHTML;
                var productID = row.cells[4].children[0].id;
                var available = row.cells[4].children[0].max;
                if(quantity > 0) {
