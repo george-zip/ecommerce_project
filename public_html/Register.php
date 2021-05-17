@@ -1,3 +1,13 @@
+<?php
+if(isset($_SESSION['Role']) && $SESSION['Role']=1){
+
+    //Only a client can register
+    header("location:index.php");
+exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

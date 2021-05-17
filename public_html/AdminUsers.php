@@ -3,7 +3,7 @@
 function require_auth()
 {
     $AUTH_USER = 'johnadmin';
-    $AUTH_PASS = 'pass';
+    $AUTH_PASS = 'pancake';
 
     header('Cache-Control:no-cache');
 

@@ -24,8 +24,12 @@ session_start();
                     echo "<li><a href='EditAccount.php'>Edit Account</a></li>";
                     echo "<li><a href='CustomerOrders.php'>Show Orders</a></li>";
                     echo "<li><a href='Checkout.php'>Cart</a></li>";
-
+                    echo "<li><a href='Register.php'>Register</a></li>";
                 }
+            if (isset($_SESSION["Role"]) && $_SESSION["Role"] == 4) {
+
+
+            }
                 if (isset($_SESSION["Role"]) && $_SESSION["Role"] == 4) {
                     echo "<li><a href='indexDelete.php'>Delete Product</a></li>";
                     echo "<li><a href='indexModify.php'>Modify Product</a></li>";
@@ -33,7 +37,7 @@ session_start();
 
             } else {
                 echo "<li><a href='Login.php'>Log In</a></li>";
-                echo "<li><a href='Register.php'>Register</a></li>";
+
             }
             if (isset($_SESSION["Role"]) && $_SESSION["Role"] == 3){
                 echo "<li><a href='indexDelete.php'>Delete Product</a></li>";
